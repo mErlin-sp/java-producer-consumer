@@ -8,18 +8,24 @@ public class Producer implements Runnable {
     }
 
     public void run() {
-        String[] importantInfo = {
-                "Mares eat oats",
-                "Does eat oats",
-                "Little lambs eat ivy",
-                "A kid will eat ivy too"
-        };
-        Random random = new Random();
+//        String[] importantInfo = {
+//                "Mares eat oats",
+//                "Does eat oats",
+//                "Little lambs eat ivy",
+//                "A kid will eat ivy too"
+//        };
+        Random rd = new Random();
 
-        for (String s : importantInfo) {
-            drop.put(s);
+        int[] importantInfo = new int[5000];
+        for (int i = 0; i < importantInfo.length; i++) {
+            importantInfo[i] = rd.nextInt(); // storing random integers in an array
+            System.out.println(importantInfo[i]); // printing each array element
+        }
+
+        for (int i : importantInfo) {
+            drop.put(String.valueOf(i));
             try {
-                Thread.sleep(random.nextInt(5000));
+                Thread.sleep(rd.nextInt(10));
             } catch (InterruptedException ignored) {
             }
         }
