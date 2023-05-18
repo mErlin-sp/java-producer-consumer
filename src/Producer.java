@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 public class Producer implements Runnable {
@@ -16,14 +17,16 @@ public class Producer implements Runnable {
 //        };
         Random rd = new Random();
 
-        int[] importantInfo = new int[5000];
+        short[] importantInfo = new short[100];
         for (int i = 0; i < importantInfo.length; i++) {
-            importantInfo[i] = rd.nextInt(); // storing random integers in an array
-            System.out.println(importantInfo[i]); // printing each array element
+            importantInfo[i] = (short) rd.nextInt(); // storing random integers in an array
+//            System.out.println(importantInfo[i]); // printing each array element
         }
+        System.out.println(Arrays.toString(importantInfo));
 
         for (int i : importantInfo) {
             drop.put(String.valueOf(i));
+            System.out.format("MESSAGE SENT: %s%n", i);
             try {
                 Thread.sleep(rd.nextInt(10));
             } catch (InterruptedException ignored) {
